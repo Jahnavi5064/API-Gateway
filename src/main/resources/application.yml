@@ -1,0 +1,55 @@
+#server:
+#port: 9097
+
+
+
+
+
+
+spring:
+   application:
+    name: API-GATEWAY
+   cloud:
+    gateway:
+      routes:
+          - id: USERMICROSERVICES
+            uri: lb://USERMICROSERVICES
+            predicates:
+              - Path=/models/**
+          - id: PRODUCTMICROSERVICES
+            uri: lb://PRODUCTMICROSERVICES
+            predicates:
+              - Path=/model/**
+
+
+
+
+          
+
+# - id: PRODUCT-SERVICE
+# uri: lb://PRODUCT-SERVICE
+# predicates:
+# - Path=/products/**
+#
+#- id: CART-SERVICE
+#uri: lb://CART-SERVICE
+#predicates:
+#- Path=/cart/**
+#
+#- id: ORDER-SERVICE
+#uri: lb://ORDER-SERVICE
+#predicates:
+#- Path= /*
+
+
+
+
+
+#eureka:
+#client:
+#register-with-eureka: true
+#fetch-registry: true
+#service-url:
+#defaultZone: http://localhost:8761/eureka/
+#instance:
+#hostname: localhost
